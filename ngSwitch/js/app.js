@@ -4,14 +4,6 @@
 var app = angular.module('app', []);
 
 /**
- * Controller: Main
- */
-app.controller('MainCtrl', function ($scope) {
-    $scope.sport = '';
-});
-
-
-/**
  * Directive: mc-switch
  */
 app.directive('mcSwitch', function () {
@@ -25,7 +17,7 @@ app.directive('mcSwitch', function () {
             var caseElement,
                 caseScope;
 
-            // Watch for changes in "sport"
+            // Watch for changes in "rgbColor"
             scope.$watch(attrs.mcSwitch, function (nv) {
 
                 // Linker function
