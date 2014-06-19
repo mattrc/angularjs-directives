@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"parent",
+				"parentElement"
+			],
+			[
+				"selecte",
+				"selectedLinker"
+			],
+			[
+				"selected",
+				"selectedElement"
+			],
+			[
+				"mcS",
+				"mcSwitchCtrl"
+			],
+			[
+				"mc",
+				"mcSwitchCtrl"
+			],
+			[
+				"mnc",
+				"mncSwitchCtrl"
+			],
+			[
+				"case",
+				"caseElement"
+			],
+			[
 				"sugges",
 				"suggestedPromise"
 			],
@@ -220,21 +248,72 @@
 	"buffers":
 	[
 		{
-			"contents": "s",
+			"file": "hsRepeat/js/app.js",
 			"settings":
 			{
-				"buffer_size": 1,
-				"line_ending": "Unix",
-				"name": "s"
+				"buffer_size": 1853,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "hsRepeat/index.html",
+			"settings":
+			{
+				"buffer_size": 874,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ngSwitch/js/app.js",
+			"settings":
+			{
+				"buffer_size": 2112,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {\n  var NG_REMOVED = '$$NG_REMOVED';\n  var ngRepeatMinErr = minErr('ngRepeat');\n  return {\n    transclude: 'element',\n    priority: 1000,\n    terminal: true,\n    $$tlb: true,\n    link: function($scope, $element, $attr, ctrl, $transclude){\n        var expression = $attr.ngRepeat;\n        var match = expression.match(/^\\s*([\\s\\S]+?)\\s+in\\s+([\\s\\S]+?)(?:\\s+track\\s+by\\s+([\\s\\S]+?))?\\s*$/),\n          trackByExp, trackByExpGetter, trackByIdExpFn, trackByIdArrayFn, trackByIdObjFn,\n          lhs, rhs, valueIdentifier, keyIdentifier,\n          hashFnLocals = {$id: hashKey};\n\n        if (!match) {\n          throw ngRepeatMinErr('iexp', \"Expected expression in form of '_item_ in _collection_[ track by _id_]' but got '{0}'.\",\n            expression);\n        }\n\n        lhs = match[1];\n        rhs = match[2];\n        trackByExp = match[3];\n\n        if (trackByExp) {\n          trackByExpGetter = $parse(trackByExp);\n          trackByIdExpFn = function(key, value, index) {\n            // assign key, value, and $index to the locals so that they can be used in hash functions\n            if (keyIdentifier) hashFnLocals[keyIdentifier] = key;\n            hashFnLocals[valueIdentifier] = value;\n            hashFnLocals.$index = index;\n            return trackByExpGetter($scope, hashFnLocals);\n          };\n        } else {\n          trackByIdArrayFn = function(key, value) {\n            return hashKey(value);\n          };\n          trackByIdObjFn = function(key) {\n            return key;\n          };\n        }\n\n        match = lhs.match(/^(?:([\\$\\w]+)|\\(([\\$\\w]+)\\s*,\\s*([\\$\\w]+)\\))$/);\n        if (!match) {\n          throw ngRepeatMinErr('iidexp', \"'_item_' in '_item_ in _collection_' should be an identifier or '(_key_, _value_)' expression, but got '{0}'.\",\n                                                                    lhs);\n        }\n        valueIdentifier = match[3] || match[1];\n        keyIdentifier = match[2];\n\n        // Store a list of elements from previous run. This is a hash where key is the item from the\n        // iterator, and the value is objects with following properties.\n        //   - scope: bound scope\n        //   - element: previous element.\n        //   - index: position\n        var lastBlockMap = {};\n\n        //watch props\n        $scope.$watchCollection(rhs, function ngRepeatAction(collection){\n          var index, length,\n              previousNode = $element[0],     // current position of the node\n              nextNode,\n              // Same as lastBlockMap but it has the current state. It will become the\n              // lastBlockMap on the next iteration.\n              nextBlockMap = {},\n              arrayLength,\n              childScope,\n              key, value, // key/value of iteration\n              trackById,\n              trackByIdFn,\n              collectionKeys,\n              block,       // last object information {scope, element, id}\n              nextBlockOrder = [],\n              elementsToRemove;\n\n\n          if (isArrayLike(collection)) {\n            collectionKeys = collection;\n            trackByIdFn = trackByIdExpFn || trackByIdArrayFn;\n          } else {\n            trackByIdFn = trackByIdExpFn || trackByIdObjFn;\n            // if object, extract keys, sort them and use to determine order of iteration over obj props\n            collectionKeys = [];\n            for (key in collection) {\n              if (collection.hasOwnProperty(key) && key.charAt(0) != '$') {\n                collectionKeys.push(key);\n              }\n            }\n            collectionKeys.sort();\n          }\n\n          arrayLength = collectionKeys.length;\n\n          // locate existing items\n          length = nextBlockOrder.length = collectionKeys.length;\n          for(index = 0; index < length; index++) {\n           key = (collection === collectionKeys) ? index : collectionKeys[index];\n           value = collection[key];\n           trackById = trackByIdFn(key, value, index);\n           assertNotHasOwnProperty(trackById, '`track by` id');\n           if(lastBlockMap.hasOwnProperty(trackById)) {\n             block = lastBlockMap[trackById];\n             delete lastBlockMap[trackById];\n             nextBlockMap[trackById] = block;\n             nextBlockOrder[index] = block;\n           } else if (nextBlockMap.hasOwnProperty(trackById)) {\n             // restore lastBlockMap\n             forEach(nextBlockOrder, function(block) {\n               if (block && block.scope) lastBlockMap[block.id] = block;\n             });\n             // This is a duplicate and we need to throw an error\n             throw ngRepeatMinErr('dupes', \"Duplicates in a repeater are not allowed. Use 'track by' expression to specify unique keys. Repeater: {0}, Duplicate key: {1}\", expression, trackById);\n           } else {\n             // new never before seen block\n             nextBlockOrder[index] = { id: trackById };\n             nextBlockMap[trackById] = false;\n           }\n         }\n\n          // remove existing items\n          for (key in lastBlockMap) {\n            // lastBlockMap is our own object so we don't need to use special hasOwnPropertyFn\n            if (lastBlockMap.hasOwnProperty(key)) {\n              block = lastBlockMap[key];\n              elementsToRemove = getBlockElements(block.clone);\n              $animate.leave(elementsToRemove);\n              forEach(elementsToRemove, function(element) { element[NG_REMOVED] = true; });\n              block.scope.$destroy();\n            }\n          }\n\n          // we are not using forEach for perf reasons (trying to avoid #call)\n          for (index = 0, length = collectionKeys.length; index < length; index++) {\n            key = (collection === collectionKeys) ? index : collectionKeys[index];\n            value = collection[key];\n            block = nextBlockOrder[index];\n            if (nextBlockOrder[index - 1]) previousNode = getBlockEnd(nextBlockOrder[index - 1]);\n\n            if (block.scope) {\n              // if we have already seen this object, then we need to reuse the\n              // associated scope/element\n              childScope = block.scope;\n\n              nextNode = previousNode;\n              do {\n                nextNode = nextNode.nextSibling;\n              } while(nextNode && nextNode[NG_REMOVED]);\n\n              if (getBlockStart(block) != nextNode) {\n                // existing item which got moved\n                $animate.move(getBlockElements(block.clone), null, jqLite(previousNode));\n              }\n              previousNode = getBlockEnd(block);\n            } else {\n              // new item which we don't know about\n              childScope = $scope.$new();\n            }\n\n            childScope[valueIdentifier] = value;\n            if (keyIdentifier) childScope[keyIdentifier] = key;\n            childScope.$index = index;\n            childScope.$first = (index === 0);\n            childScope.$last = (index === (arrayLength - 1));\n            childScope.$middle = !(childScope.$first || childScope.$last);\n            // jshint bitwise: false\n            childScope.$odd = !(childScope.$even = (index&1) === 0);\n            // jshint bitwise: true\n\n            if (!block.scope) {\n              $transclude(childScope, function(clone) {\n                clone[clone.length++] = document.createComment(' end ngRepeat: ' + expression + ' ');\n                $animate.enter(clone, null, jqLite(previousNode));\n                previousNode = clone;\n                block.scope = childScope;\n                // Note: We only need the first/last node of the cloned nodes.\n                // However, we need to keep the reference to the jqlite wrapper as it might be changed later\n                // by a directive with templateUrl when its template arrives.\n                block.clone = clone;\n                nextBlockMap[block.id] = block;\n              });\n            }\n          }\n          lastBlockMap = nextBlockMap;\n        });\n    }\n  };\n\n  function getBlockStart(block) {\n    return block.clone[0];\n  }\n\n  function getBlockEnd(block) {\n    return block.clone[block.clone.length - 1];\n  }\n}];",
+			"settings":
+			{
+				"buffer_size": 8148,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "bower_components/angular/angular.js",
+			"settings":
+			{
+				"buffer_size": 767969,
+				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 375.0,
+		"height": 102.0,
 		"selected_items":
 		[
+			[
+				"lintersett",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"server",
+				"SublimeServer: Start SublimeServer"
+			],
+			[
+				"start",
+				"SublimeServer: Start SublimeServer"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
 			[
 				"ave",
 				"Project: Save As"
@@ -292,10 +371,6 @@
 				"SublimeLinter: Enable Linting"
 			],
 			[
-				"javas",
-				"Set Syntax: JavaScript"
-			],
-			[
 				"css",
 				"Set Syntax: CSS"
 			],
@@ -318,10 +393,6 @@
 			[
 				"save",
 				"Project: Save As"
-			],
-			[
-				"insta",
-				"Package Control: Install Package"
 			],
 			[
 				"lo",
@@ -401,6 +472,15 @@
 	},
 	"file_history":
 	[
+		"/home/ma/.config/sublime-text-3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/home/ma/www/practice/bower_components/angular/angular.js",
+		"/home/ma/www/practice/ngRepeat/index.html",
+		"/home/ma/www/practice/bower_components/angular/bower.json",
+		"/home/ma/www/practice/bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff",
+		"/home/ma/.config/sublime-text-3/Packages/User/SublimeServer.sublime-settings",
+		"/home/ma/www/practice/ngSwitch/js/app.js",
+		"/home/ma/www/practice/bower.json",
+		"/home/ma/www/practice/.gitignore",
 		"/home/ma/www/hinchas/views/partials/appTeam/main/sidebar-right.html",
 		"/home/ma/www/hinchas/views/partials/appTeam/settings/sidebar.html",
 		"/home/ma/www/hinchas/views/partials/appPublisher/settings/sidebar.html",
@@ -519,16 +599,7 @@
 		"/home/ma/www/hinchas/views/externalViews/maintenance.js",
 		"/home/ma/www/hinchas/views/partials/appTeam/main/main.html",
 		"/home/ma/www/hinchas/views/partials/modals/messages.send.html",
-		"/home/ma/www/hinchas/scripts/bower_components/piwik/plugins/CoreConsole/Commands/SyncUITestScreenshots.php",
-		"/home/ma/www/hinchas/scripts/controllers/messages.js",
-		"/home/ma/www/hinchas/scripts/services/messageSocket.js",
-		"/home/ma/www/hinchas/views/partials/app/navigation.html",
-		"/home/ma/www/hinchas/scss/_bootstrap-3-changes.scss",
-		"/home/ma/www/hinchas/views/partials/app/containers/main.html",
-		"/home/ma/www/hinchas/views/partials/app/containers/settings.html",
-		"/home/ma/www/hinchas/views/partials/appPublisher/main/main.html",
-		"/home/ma/www/hinchas/views/partials/appPublisher/settings/settings.html",
-		"/home/ma/www/hinchas/scripts/bower_components/piwik/plugins/Zeitgeist/templates/simpleLayoutFooter.tpl"
+		"/home/ma/www/hinchas/scripts/bower_components/piwik/plugins/CoreConsole/Commands/SyncUITestScreenshots.php"
 	],
 	"find":
 	{
@@ -649,6 +720,33 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"h3",
+			"items",
+			"item",
+			"clearElements",
+			"match",
+			"valueIdentifier",
+			"$animate",
+			"block",
+			"append",
+			"trackByExp",
+			"$attrs",
+			"ngRepeatDi",
+			"$transclude",
+			"ngRepeatDi",
+			"ngRepeat",
+			"ngRepeatDire",
+			"ngRepeat",
+			"Custom Switch",
+			"selected",
+			"return {",
+			"mcSwitchCtrl[",
+			"mcSwitchCtrl",
+			"return {",
+			"selectedCase",
+			"linkerr",
+			"mncSwitchCtrl",
+			"newVal",
 			"target=\"_blank",
 			"hsEnti",
 			"pelota",
@@ -749,34 +847,7 @@
 			"<div class=\"modal-suggest__response\">",
 			"thank you",
 			"checkPlayer",
-			"LoggedEntityFactory",
-			" {",
-			"checkEntityByUser",
-			"SuggestEntityDialog",
-			"modal",
-			"<form novalidate name=\"\" class=\"\">",
-			"<form>",
-			"face",
-			"s=\"btn",
-			"<div class=\"media\">",
-			"h5",
-			"search",
-			"h5",
-			"invitacion-content",
-			"h5",
-			"modal-suggest",
-			"<a class=\"btn",
-			"<a class=\"btn btn-sm btn-primary\"",
-			"btn ",
-			"btn",
-			"input",
-			"spa",
-			"span4",
-			"row-fluid",
-			"span12",
-			".modal-suggest",
-			"messages.sent",
-			"form"
+			"LoggedEntityFactory"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -814,30 +885,157 @@
 			[
 				{
 					"buffer": 0,
+					"file": "hsRepeat/js/app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1,
+						"buffer_size": 1853,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1,
-								1
+								1724,
+								1724
 							]
 						],
 						"settings":
 						{
-							"auto_name": "s",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 170.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "hsRepeat/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 874,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								828,
+								828
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "ngSwitch/js/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2112,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8148,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7992,
+								7992
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1961.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "bower_components/angular/angular.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 767969,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								128792,
+								128792
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 73770.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -860,11 +1058,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.47024504084,
 			1.0
 		],
 		"rows":
@@ -889,6 +1094,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"angu",
+				"bower_components/angular/angular.js"
+			],
 			[
 				"sidebarrig",
 				"views/partials/appTeam/main/sidebar-right.html"
@@ -1396,10 +1605,6 @@
 			[
 				"roster",
 				"views/partials/admin_teams/roster_list.html"
-			],
-			[
-				"profilehtml",
-				"views/partials/app/settings/profile.html"
 			]
 		],
 		"width": 0.0
@@ -1409,6 +1614,10 @@
 		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"hi",
+				"~/www/hinchas/Hinchas.sublime-project"
+			],
 			[
 				"",
 				"~/www/hinchas/Hinchas.sublime-project"
