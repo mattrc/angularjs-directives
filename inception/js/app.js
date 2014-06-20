@@ -15,7 +15,7 @@ angular.module('app', [])
 			$rootScope.log = $rootScope.log + (tAttrs.logCompile + ' (compile)\n');
 
 			// Prepend content
-			tElement.prepend(tAttrs.logCompile)
+			tElement.prepend(tAttrs.logCompile);
 
 			return {
 				pre: function ($scope, $element, $attrs) {
