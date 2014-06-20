@@ -4,9 +4,9 @@
 var app = angular.module('app', []);
 
 /**
- * Directive: mc-switch
+ * Directive: hs-switch
  */
-app.directive('mcSwitch', function () {
+app.directive('hsSwitch', function () {
     return {
         controller: function () {
             // Linker functions object
@@ -18,7 +18,7 @@ app.directive('mcSwitch', function () {
                 caseScope;
 
             // Watch for changes in "rgbColor"
-            scope.$watch(attrs.mcSwitch, function (nv) {
+            scope.$watch(attrs.hsSwitch, function (nv) {
 
                 // Linker function
                 var caseLinker = ctrl.cases['!' + nv] || ctrl.cases['?'];
@@ -53,28 +53,28 @@ app.directive('mcSwitch', function () {
 
 
 /**
- * Directive: mc-switch-when
+ * Directive: hs-switch-when
  */
-app.directive('mcSwitchWhen', function () {
+app.directive('hsSwitchWhen', function () {
     return {
         transclude: 'element',
-        require: '^mcSwitch',
-        link: function (scope, el, attrs, mcSwitchCtrl, linker) {
-            mcSwitchCtrl.cases['!' + attrs.mcSwitchWhen] = linker;
+        require: '^hsSwitch',
+        link: function (scope, el, attrs, hsSwitchCtrl, linker) {
+            hsSwitchCtrl.cases['!' + attrs.hsSwitchWhen] = linker;
         }
     };
 });
 
 
 /**
- * Directive: mc-switch-default
+ * Directive: hs-switch-default
  */
-app.directive('mcSwitchDefault', function () {
+app.directive('hsSwitchDefault', function () {
     return {
         transclude: 'element',
-        require: '^mcSwitch',
-        link: function (scope, el, attrs, mcSwitchCtrl, linker) {
-            mcSwitchCtrl.cases['?'] = linker;
+        require: '^hsSwitch',
+        link: function (scope, el, attrs, hsSwitchCtrl, linker) {
+            hsSwitchCtrl.cases['?'] = linker;
         }
     };
 });
