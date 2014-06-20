@@ -1,0 +1,18 @@
+div {
+	padding: 5px;
+	margin: 5px 0;
+	background-color: #eee;
+	border: 1px solid #bbb;
+}
+
+div > div {
+	background-color: #ddd;
+}
+
+div > div > div {
+	background-color: #ccc;
+}
+
+pre {
+	line-height: 1.75;
+}
