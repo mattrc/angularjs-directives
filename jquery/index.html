@@ -1,0 +1,58 @@
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Plugins</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="vendor/timepicker/jquery.timepicker.css">
+    <link rel="stylesheet" href="vendor/rangeslider/rangeslider.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="vendor/timepicker/jquery.timepicker.js"></script>
+    <script src="vendor/hideShowPassword/hideShowPassword.js"></script>
+    <script src="vendor/rangeslider/rangeslider.js"></script>
+
+    <!-- AngularJS -->
+    <script src="../bower_components/angular/angular.js"></script>
+
+    <!-- App -->
+    <script src="js/app.js"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>jQuery Plugins</h1>
+
+        <!-- jQuery Timepicker -->
+        <h3><a href="http://jonthornton.github.io/jquery-timepicker/">jQuery Timepicker</a></h3>
+
+        <div class="well well-sm">
+            <p>ngModel: <code>{{ time }}</code></p>
+            <input timepicker type="text" ng-model="time">
+        </div>
+
+
+        <!-- jQuery hideShowPassword -->
+        <h3><a href="http://cloudfour.github.io/hideShowPassword/">jQuery hideShowPassword</a></h3>
+        <div class="well well-sm">
+            <p>ngModel: <code>{{ password }}</code></p>
+            <input hide-show-password type="password" ng-model="password">
+        </div>
+
+        <!-- jQuery hideShowPassword -->
+        <h3><a href="http://andreruffert.github.io/rangeslider.js/">jQuery rangeslider</a></h3>
+        <div class="well well-sm">
+            <p>ngModel: <code>{{ range }}</code></p>
+            <input rangeslider ng-model="range" type="range" min="10" max="500" step="10" value="100">
+        </div>
+
+
+
+    </div>
+
+</body>
+</html>
