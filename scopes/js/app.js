@@ -1,44 +1,38 @@
 (function () {
 'use strict';
 
-var app = angular.module('app', []);
+angular.module('app', [])
 
-app.controller('AppCtrl', function ($scope) {
+.controller('AppCtrl', function ($scope) {
     $scope.colors = ['red', 'green', 'blue'];
 
     $scope.add = function (color) {
         $scope.colors.push(color);
-        $scope.color = '';
+        $scope.color = ''; // Doesn't work on isolated directive
     }
-});
+})
 
-app.directive('scopeFalse', function () {
+.directive('scopeFalse', function () {
     return {
         // scope: false,
-        templateUrl: 'partials/template.html',
-        controller: function ($scope) {
-
-        }
+        templateUrl: 'partials/template.html'
     }
-});
+})
 
-app.directive('scopeTrue', function () {
+.directive('scopeTrue', function () {
     return {
         scope: true,
-        templateUrl: 'partials/template.html',
-        controller: function ($scope) {
-
-        }
+        templateUrl: 'partials/template.html'
     }
-});
+})
 
-app.directive('scopeIsolated', function () {
+.directive('scopeIsolated', function () {
     return {
-        scope: {},
-        templateUrl: 'partials/template.html',
-        controller: function ($scope) {
-
-        }
+        scope: {
+            colors: '=',
+            add: '&'
+        },
+        templateUrl: 'partials/template2.html'
     }
 });
 
