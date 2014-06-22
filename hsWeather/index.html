@@ -1,0 +1,42 @@
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Widget</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <!-- JavaScrip -->
+    <script src="../bower_components/underscore/underscore.js"></script>
+    <script src="../bower_components/d3/d3.js"></script>
+
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+
+    <!-- AngularJS -->
+    <!--<script src="../bower_components/angular/angular.js"></script>-->
+    <script src="js/angular-1.0.8.js"></script>
+
+    <!-- App -->
+    <script src="js/weather.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Weather Widget</h1>
+        <p><a href="http://www.ng-newsletter.com/posts/directives.html">
+            Build custom directives with AngularJS
+        </a></p>
+
+        <br>
+
+        <input type="text" ng-model="city" class="form-control" placeholder="City" required autofocus>
+        <hs-weather hs-city="{{ city }}" hs-opts="{width:720, height:120}"></hs-weather>
+
+    </div>
+
+</body>
+</html>
