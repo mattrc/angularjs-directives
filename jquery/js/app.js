@@ -77,6 +77,7 @@ angular.module('app', [])
 			tags: '=ngModel',
 			// opts: '@'
 		},
+		// scope: true, FAILS
 		template: '<div class="tag-box"></div>',
 		link: function (scope, element, attr) {
 
