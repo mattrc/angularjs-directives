@@ -8,11 +8,15 @@ angular.module('app', [])
 
 	return function (scope, element) {
 
-		element.timepicker({
+		// Config Object
+		var opts = {
 			minTime: '9:00am',
 			maxTime: '8:00pm',
 			timeFormat: 'H:i'
-		});
+		}
+
+		// Init plugin
+		element.timepicker(opts);
 
 	}
 
@@ -23,9 +27,14 @@ angular.module('app', [])
 
 	return {
 		link: function (scope, element, attr) {
-			element.rangeslider({
+
+			// Config Object
+			var opts = {
 				polyfill: false
-			});
+			}
+
+			// Init plugin
+			element.rangeslider(opts);
 		}
 	}
 
@@ -39,7 +48,7 @@ angular.module('app', [])
 		compile: function (tElement, tAttr) {
 
 			// Create checkbox on the fly
-			var checkbox = angular.element('<label><input type="checkbox" ng-model="toggle">Show password</label>');
+			var checkbox = angular.element('<label><input type="checkbox" ng-model="toggle"> Show password</label>');
 
 			// Insert checkbox
 			tElement.after(checkbox);
@@ -58,5 +67,47 @@ angular.module('app', [])
 	}
 
 })
+
+// jQuery taggingJS
+.directive('tagging', function ($parse) {
+
+	return {
+		replace: true,
+		scope: {
+			tags: '=ngModel',
+			// opts: '@'
+		},
+		template: '<div class="tag-box"></div>',
+		link: function (scope, element, attr) {
+
+			var opts, specialKeys;
+
+			// Parse configuration Object
+			opts = attr.opts ? ($parse(attr.opts)(scope)) : {};
+
+			// Init plugin
+			element.tagging(opts);
+
+			// Speciel keys that trigger insert or remove
+			specialKeys = element.tagging('getSpecialKeys');
+
+			// Listen to Enter key
+			element.on('keyup', function (ev) {
+
+				// Check if current key creates a new tag
+				if ( _.contains(specialKeys, ev.keyCode)) {
+
+					// Call the $digest cycle
+					scope.$apply(function () {
+
+						// Bind tags to the scope
+						scope.tags = element.tagging('getTags');
+					});
+				}
+			});
+		}
+	}
+
+});
 
 })();
