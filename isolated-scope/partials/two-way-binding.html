@@ -1,0 +1,25 @@
+<div class="well well-sm">
+	<p>Title: <code>{{ title }}</code></p>
+    <p>Colors: <code>{{ colors }}</code></p>
+    <p>Person: <code>{{ person }}</code></p>
+
+    <hr>
+
+    <form class="form form-inline">
+        <input type="text" ng-model="newTitle" class="form-control input-sm" placeholder="Title">
+        <button ng-click="updateTitle(newTitle)" class="btn btn-sm btn-primary">Update title</button>
+    </form>
+
+    <form class="form form-inline">
+        <input type="text" ng-model="newColor" class="form-control input-sm" placeholder="Color">
+        <button ng-click="addColor(newColor)" class="btn btn-sm btn-primary">Add color</button>
+    </form>
+
+    <form class="form form-inline">
+        <input type="text" ng-model="key" class="form-control input-sm" placeholder="Person key">
+        <input type="text" ng-model="val" class="form-control input-sm" placeholder="Person value">
+        <button ng-click="addPerson(key, val)" class="btn btn-sm btn-primary">Add person</button>
+    </form>
+
+    <div class="scope-id">#{{ $id }}</div>
+</div>
