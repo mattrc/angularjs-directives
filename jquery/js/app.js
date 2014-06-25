@@ -1,4 +1,3 @@
-(function () {
 'use strict';
 
 angular.module('app', [])
@@ -13,12 +12,12 @@ angular.module('app', [])
 			minTime: '9:00am',
 			maxTime: '8:00pm',
 			timeFormat: 'H:i'
-		}
+		};
 
 		// Init plugin
 		element.timepicker(opts);
 
-	}
+	};
 
 })
 
@@ -31,12 +30,12 @@ angular.module('app', [])
 			// Config Object
 			var opts = {
 				polyfill: false
-			}
+			};
 
 			// Init plugin
 			element.rangeslider(opts);
 		}
-	}
+	};
 
 })
 
@@ -62,9 +61,9 @@ angular.module('app', [])
 					// Run plugin action
 					element.hideShowPassword(newValue);
 				});
-			}
+			};
 		}
-	}
+	};
 
 })
 
@@ -107,8 +106,6 @@ angular.module('app', [])
 				}
 			});
 		}
-	}
+	};
 
 });
-
-})();

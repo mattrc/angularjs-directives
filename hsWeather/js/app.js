@@ -1,6 +1,4 @@
-(function () {
 'use strict';
 
-var app = angular.module('app', ['hsWeather']);
-
-})();
+// Main App
+angular.module('app', ['hsWeather']);

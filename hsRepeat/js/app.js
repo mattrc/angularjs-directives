@@ -1,18 +1,24 @@
-(function () {
 'use strict';
 
-var app = angular.module('app', []);
+angular.module('app', [])
 
-app.controller('AppCtrl', function ($scope) {
+.controller('AppCtrl', function ($scope) {
     $scope.persons = ['Ana', 'Laura', 'Javier', 'Marcela', 'Federico'];
 
     $scope.add = function ()  {
         $scope.persons.push($scope.newPerson);
         $scope.newPerson = '';
     };
-});
+})
 
-app.directive('hsRepeat', function () {
+.directive('hsRepeat', function () {
+
+    var clearClones = function (clones) {
+        angular.forEach(clones, function (el) {
+            el.remove();
+        });
+    };
+
     return {
         transclude: 'element',
         priority: 1000,
@@ -58,11 +64,4 @@ app.directive('hsRepeat', function () {
         }
     };
 
-    function clearClones(clones) {
-        angular.forEach(clones, function (el) {
-            el.remove();
-        });
-    }
 });
-
-})();

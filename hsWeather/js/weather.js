@@ -1,5 +1,3 @@
-
-(function () {
 'use strict';
 
 /**
@@ -34,7 +32,7 @@ angular.module('hsWeather', [])
 				execNext();
 			}
 		});
-	}
+	};
 
 	// Service API
 	return {
@@ -113,7 +111,7 @@ angular.module('hsWeather', [])
 			.attr('fill', 'none')
 			.attr('stroke-width', '4')
 			.attr('stroke', '#ec4689');
-	}
+	};
 
 	// Service API
 	return {
@@ -185,8 +183,6 @@ angular.module('hsWeather', [])
 			});
 		}
 
-	}
+	};
 
-})
-
-})();
+});

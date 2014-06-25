@@ -1,7 +1,6 @@
-(function () {
 'use strict';
 
-angular.module('app', []);
+angular.module('app', [])
 
 .controller('AppCtrl', function ($scope) {
     $scope.title = 'Hello World';
@@ -11,20 +10,20 @@ angular.module('app', []);
     $scope.updateTitle = function (title) {
         $scope.title = title;
         $scope.newTitle = '';
-    }
+    };
 
     $scope.addColor = function (color) {
         $scope.colors.push(color);
         $scope.newColor = '';
-    }
+    };
 
     $scope.addPerson = function (key, val) {
         $scope.person[key] = val;
         $scope.key = '';
         $scope.val = '';
-    }
+    };
 
-});
+})
 
 .directive('oneWayBinding', function () {
     return {
@@ -36,8 +35,8 @@ angular.module('app', []);
             // subtitle: '@foo'
         },
         templateUrl: 'partials/one-way-binding.html'
-    }
-});
+    };
+})
 
 .directive('twoWayBinding', function () {
     return {
@@ -52,21 +51,19 @@ angular.module('app', []);
             $scope.updateTitle = function (title) {
                 $scope.title = title;
                 $scope.newTitle = '';
-            }
+            };
 
             $scope.addColor = function (color) {
                 $scope.colors.push(color);
                 $scope.newColor = '';
-            }
+            };
 
             $scope.addPerson = function (key, val) {
                 $scope.person[key] = val;
                 $scope.key = '';
                 $scope.val = '';
-            }
+            };
 
         }
-    }
+    };
 });
-
-})();

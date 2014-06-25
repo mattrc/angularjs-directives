@@ -1,4 +1,3 @@
-(function () {
 'use strict';
 
 angular.module('app', [])
@@ -24,10 +23,8 @@ angular.module('app', [])
 				post: function ($scope, $element, $attrs) {
 					$rootScope.log = $rootScope.log + ($attrs.logCompile + ' (post-link)\n');
 				}
-			}
+			};
 		}
-	}
+	};
 
 });
-
-})();

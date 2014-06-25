@@ -1,12 +1,11 @@
-(function () {
 'use strict';
 
-var app = angular.module('app', []);
+angular.module('app', [])
 
 /**
  * Directive: hs-switch
  */
-app.directive('hsSwitch', function () {
+.directive('hsSwitch', function () {
     return {
         controller: function () {
             // Linker functions object
@@ -49,13 +48,13 @@ app.directive('hsSwitch', function () {
             });
         }
     };
-});
+})
 
 
 /**
  * Directive: hs-switch-when
  */
-app.directive('hsSwitchWhen', function () {
+.directive('hsSwitchWhen', function () {
     return {
         transclude: 'element',
         require: '^hsSwitch',
@@ -63,13 +62,13 @@ app.directive('hsSwitchWhen', function () {
             hsSwitchCtrl.cases['!' + attrs.hsSwitchWhen] = linker;
         }
     };
-});
+})
 
 
 /**
  * Directive: hs-switch-default
  */
-app.directive('hsSwitchDefault', function () {
+.directive('hsSwitchDefault', function () {
     return {
         transclude: 'element',
         require: '^hsSwitch',
@@ -78,5 +77,3 @@ app.directive('hsSwitchDefault', function () {
         }
     };
 });
-
-})();
