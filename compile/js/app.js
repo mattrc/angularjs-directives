@@ -13,15 +13,29 @@
 
 		return {
 			compile: function (element) {
+
+				// When prepareing the template for the list, we
+				// want to extract the "delete confirmation" stuff
+				// since it's not going to be used very often.
 				var confirm = element.find('.delete').remove();
 
+				// Now that we've extracted the overlay, we need
+				// to compile it separeately so that it can be
+				// transcluded an linked separately.
 				var transcludeConfirm = $compile(confirm);
 
+				// I bind the UI to the scope.
 				return function (scope, element) {
 
+					// For this demo, we know that the delete
+					// confirmation is triggered when the user
+					// goes to click on the delete link. As such,
+					// we can inject the delete confirmation overlay
+					// when the user "starts" to click.
 					element.on('mousedown', 'button', function (ev) {
 
-						// Transclude confirm element
+						// Transclude and link the DOM tree for
+						// the delete confirmation.
 						transcludeConfirm(scope, function (clone) {
 							// Append to element
 							element.append(clone);
@@ -29,6 +43,9 @@
 							element.off(ev);
 						});
 
+						// Trigger a $digest so all the watchers
+						// within the injected DOM tree know to
+						// initialize their bindings.
 						scope.$apply();
 
 					});
@@ -47,6 +64,7 @@
 
 	});
 
+	// Helper function to build a collection of friends
 	function buildFriends (count) {
 
 		var names = [ "Jack", "Peter", "Sam", "Danny" ];
