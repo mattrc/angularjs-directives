@@ -1,0 +1,49 @@
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>A thousand friends</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+
+    <!-- AngularJS -->
+    <script src="../bower_components/angular/angular.js"></script>
+
+    <!-- App -->
+    <script src="js/app.js"></script>
+</head>
+<body>
+
+    <div class="container-fluid">
+
+        <h1>A thousand friends</h1>
+        <p><a href="http://www.bennadel.com/blog/2557-defer-dom-tree-binding-in-angularjs-with-delayed-transclusion.htm">
+            Defer DOM Tree Binding In AngularJS With Delayed Transclusion
+        </a></p>
+
+        <div ng-controller="AppController">
+
+            <ul class="list-unstyled">
+                <li hs-friend ng-repeat="friend in friends">
+                    <h3>{{ friend.name }}</h3>
+                    <button ng-click="showConfirmation()">Delete</button>
+
+                    <div ng-show="friend.deleting" class="delete">
+                        <div class="h4">Delete {{ friend.name }}?</div>
+                        <button ng-click="hideConfirmation()">Cancel</button>
+                    </div>
+
+
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
