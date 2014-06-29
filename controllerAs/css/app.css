@@ -1,0 +1,21 @@
+body {
+	background: transparent;
+}
+
+h3 {
+	/*margin: 40px 0 15px 0;*/
+}
+
+input {
+	margin-bottom: 15px;
+	border: none;
+	padding: 5px;
+	min-width: 200px;
+}
+
+.ng-scope,
+.ng-isolate-scope {
+	padding: 1em;
+	border: 3px solid rgba(215, 40, 40, 0.9);
+	background-color: rgba(215, 40, 40, 0.1);
+}
