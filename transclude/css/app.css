@@ -1,0 +1,64 @@
+/*div div {
+	border: 2px solid #c7254e;
+	padding: 50px;
+}*/
+html {
+	border: none !important;
+	padding-top: 10px !important;
+}
+
+div {
+	/*position: relative;*/
+}
+
+code {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+code {
+	background: #4cae4c;
+	color: white;
+	border-radius: 0;
+}
+
+p, code {
+	font-size: 24px;
+}
+
+p {
+	margin-bottom: 20px;
+}
+
+.ng-scope,
+.ng-isolate-scope {
+	border: 7px solid #4cae4c;
+
+	padding: 50px;
+	position: relative;
+}
+
+.ng-isolate-scope {
+	border: 7px solid #357ebd;
+}
+
+.ng-isolate-scope > code {
+	background: #357ebd;
+}
+
+[ng-transclude] .ng-scope {
+	border: 7px solid #d43f3a;
+}
+
+[ng-transclude] .ng-scope code {
+	background: #d43f3a;
+}
+
+input {
+	border: 2px solid #ccc;
+	padding: 0.5em 1em;
+	width: 100%;
+	display: block;
+	margin-bottom: 20px;
+}
