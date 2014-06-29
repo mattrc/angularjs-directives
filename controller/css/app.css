@@ -1,0 +1,75 @@
+body {
+	background: #e9eaed;
+}
+
+button {
+	border: none;
+	color: white;
+	padding: 0.5em 1em;
+	border-radius: 3px;
+}
+
+
+.inbox {
+	width: 48%;
+	margin: 0 1%;
+	float: left;
+}
+
+.inbox ul {
+	list-style: none;
+	padding: 0;
+}
+
+.message {
+	position: relative;
+	background: white;
+	border: 1px solid;
+	border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+	margin-bottom: 20px;
+	padding: 20px;
+}
+
+.message button {
+	background: white;
+	font-size: 20px;
+	font-weight: bold;
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	color: #d9534f;
+	padding: 0;
+}
+
+.message button:focus {
+	outline: none;
+}
+
+.message span {
+	display: block;
+	color: #ccc;
+	font-size: 12px;
+}
+
+.compose {
+	margin-bottom: 40px;
+	padding: 20px;
+	background-color: white;
+	border: 1px solid;
+	border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+}
+
+.compose input,
+.compose textarea {
+	width: 100%;
+	display: block;
+	padding: 0.5em;
+	margin-bottom: 10px;
+	border: 1px solid #d5d5d5;
+}
+
+.compose button {
+	background: #428bca;
+	font-size: 14px;
+}
+
