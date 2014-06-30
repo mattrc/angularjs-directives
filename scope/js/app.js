@@ -3,10 +3,13 @@
 angular.module('app', [])
 
 .controller('AppCtrl', function ($scope) {
+
+    // Objects (Array, Object)
     $scope.person = {
         name: 'Peter'
     };
 
+    // Primitives (String, Number, Boolean, null, undefined)
     $scope.country = 'Argentina';
 })
 

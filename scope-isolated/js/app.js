@@ -4,7 +4,8 @@ angular.module('app', [])
 
 .controller('AppCtrl', function ($scope) {
     $scope.person = {
-        name: 'John'
+        name: 'John',
+        last: 'Doe'
     };
 })
 
