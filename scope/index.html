@@ -24,12 +24,11 @@
 
         <h3>App Controller</h3>
         <div class="alert alert-info">
-            <p>Colors: <code>{{ colors | json }}</code></p> <br>
+            <p>Person: <code>{{ person }}</code></p>
+            <p>Country: <code>{{ country }}</code></p>
 
-            <form>
-                <input type="text" ng-model="color">
-                <button ng-click="add(color)">Add</button>
-            </form>
+            <input type="text" ng-model="person.name">
+            <input type="text" ng-model="country">
 
             <div class="scope-id">#{{ $id }}</div>
         </div>
@@ -40,10 +39,10 @@
         <h3>Scope: true</h3>
         <div scope-true></div>
 
-        <h3>Scope: { colors: '=', add: '&' }</h3>
-        <div scope-isolated colors="colors" add="add(colors)"></div>
 
     </div>
+
+    <br>
 
 </body>
 </html>

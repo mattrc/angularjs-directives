@@ -33,12 +33,17 @@ input, button {
 }
 
 code {
-	font-size: 18px;
+	/*font-size: 18px;*/
 }
 
+.well p,
+.alert p {
+	font-size: 18px;
+}
 input {
 	border: 2px solid #ccc;
-	width: 200px;
+	width: 100%;
+	margin-bottom: 10px;
 }
 
 button {
