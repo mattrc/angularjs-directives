@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
 
+    <!-- JavaScript -->
+    <script src="../bower_components/log/log.js"></script>
+
     <!-- jQuery -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
 
@@ -24,13 +27,13 @@
         <h1>Directive Inception</h1>
 
         <div log-compile="parent">
-            <div log-compile="---child 1">
-                <div log-compile="--------subchild 1 A"></div>
-                <div log-compile="--------subchild 1 B"></div>
+            <div log-compile="--- child 1">
+                <div log-compile="-------- subchild 1 A"></div>
+                <!-- <div log-compile="-------- subchild 1 B"></div> -->
             </div>
-            <!-- <div log-compile="---child 2">
-                <div log-compile="--------subchild 2 A"></div>
-                <div log-compile="--------subchild 2 B"></div>
+            <!-- <div log-compile="--- child 2">
+                <div log-compile="-------- subchild 2 A"></div>
+                <div log-compile="-------- subchild 2 B"></div>
             </div> -->
         </div>
 
