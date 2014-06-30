@@ -1,7 +1,11 @@
 .well,
 .alert {
 	position: relative;
-	margin-bottom: 3em;
+	margin-bottom: 0.5em;
+}
+
+form {
+	margin-bottom: 0;
 }
 
 h4 {
@@ -24,8 +28,12 @@ p {
 }
 
 input, button {
-	font-size: 14px;
+	font-size: 18px;
 	padding: 0.25em 1em;
+}
+
+code {
+	font-size: 18px;
 }
 
 input {
@@ -38,3 +46,5 @@ button {
 	background: #357ebd;
 	color: white;
 }
+
+

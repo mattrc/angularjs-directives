@@ -7,7 +7,7 @@ angular.module('app', [])
 
     $scope.add = function (color) {
         $scope.colors.push(color);
-        $scope.color = ''; // Doesn't work on isolated directive
+        $scope.color = ''; // Doesn't wor on isolated scope
     };
 })
 
