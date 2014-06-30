@@ -1,0 +1,29 @@
+input {
+	width: 100%;
+	font-size: 14px;
+	padding: 0.5em 1em;
+	border: 2px solid #ccc;
+	display: block;
+	margin: 20px 0;
+}
+
+.container > div {
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+[hs-switch-when="red"] {
+	background: #d43f3a;
+	color: white;
+}
+
+[hs-switch-when="green"] {
+	background: #4cae4c;
+	color: white;
+}
+
+[hs-switch-when="blue"] {
+	background: #357ebd;
+	color: white;
+}

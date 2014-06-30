@@ -1,10 +1,11 @@
 <html ng-app="app">
 <head>
     <meta charset="UTF-8">
-    <title>Custom Switch</title>
+    <title>hsSwitch</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/app.css">
 
     <!-- jQuery -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -19,9 +20,10 @@
 
     <div class="container">
 
-        <h1>Custom Switch</h1>
+        <h1>hsSwitch</h1>
 
-        <input type="text" ng-model="rgbColor" class="form-control" placeholder="RGB color" autofocus>
+        <input type="text" ng-model="rgbColor" placeholder="RGB color" autofocus>
+
         <div hs-switch="rgbColor">
             <div hs-switch-when="red">RED</div>
             <div hs-switch-when="green">GREEN</div>
