@@ -12,7 +12,7 @@
 	app.directive('hsFriend', function ($compile) {
 
 		return {
-			compile: function (element, attr, transclude) {
+			compile: function (element) {
 
 				// Extract the delete confirmation element
 				var confirm = element.find('.delete').remove();
@@ -22,7 +22,7 @@
 				var transcludeConfirm = $compile(confirm);
 
 				// Link function
-				return function (scope, element, attr) {
+				return function (scope, element) {
 
 					// Inject the delete confirmation when the user "starts" to click.
 					element.on('mousedown', 'button', function (ev) {
@@ -57,15 +57,13 @@
 	// Helper function to build a collection of friends
 	function buildFriends (count) {
 
-		var names = [ "Jack", "Peter", "Sam", "Danny" ];
 		var friends = [];
 
 		for ( var i = 0 ; i < count ; i += 1 ) {
 
 			friends.push({
 				id: i,
-				name: names[ i % 4 ],
-				isShowingConfirmation: false
+				name: window.chance.first()
 			});
 
 		}
