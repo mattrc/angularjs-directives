@@ -2,19 +2,15 @@
 
 angular.module('app', [])
 
-.controller('AppController', function ($scope) {
-	$scope.foo = 'bar';
-})
-
 .directive('hsDirective', function () {
 
 	return {
-		templateUrl: 'partials/template.html',
 		scope: true,
-		controllerAs: 'ctrl',
+		template: '<input ng-model="alias.foo"> <p>{{ alias.foo }}</p>',
+		controllerAs: 'alias',
 		controller: function ($scope) {
 
-			this.foo = 'bar'; // ctrl.foo == 'bar'
+			this.foo = 'bar'; // alias.foo == 'bar'
 
 			// Special watcher
 			$scope.$watch(angular.bind(this, function () {
