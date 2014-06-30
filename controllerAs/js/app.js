@@ -6,7 +6,7 @@ angular.module('app', [])
 
 	return {
 		scope: true,
-		template: '<input ng-model="alias.foo"> <p>{{ alias.foo }}</p>',
+		templateUrl: 'partials/template.html',
 		controllerAs: 'alias',
 		controller: function ($scope) {
 
