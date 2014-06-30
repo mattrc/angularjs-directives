@@ -1,9 +1,9 @@
 <div class="well well-sm">
 	<p>Colors: <code>{{ colors }}</code></p>
 	<hr>
-	<form class="form form-inline">
-		<input type="text" ng-model="color" class="form-control">
-		<button ng-click="add(color)" class="btn btn-primary">Add</button>
+	<form>
+		<input type="text" ng-model="color">
+		<button ng-click="add(color)">Add</button>
 	</form>
 
 	<div class="scope-id">#{{ $id }}</div>

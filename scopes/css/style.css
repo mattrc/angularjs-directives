@@ -22,3 +22,19 @@ p {
 	padding: .25em .5em;
 	border-radius: .25em;
 }
+
+input, button {
+	font-size: 14px;
+	padding: 0.25em 1em;
+}
+
+input {
+	border: 2px solid #ccc;
+	width: 200px;
+}
+
+button {
+	border: 2px solid #357ebd;
+	background: #357ebd;
+	color: white;
+}
