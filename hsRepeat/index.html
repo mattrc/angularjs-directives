@@ -1,10 +1,11 @@
 <html ng-app="app">
 <head>
     <meta charset="UTF-8">
-    <title>Custom Repeat</title>
+    <title>hsRepeat</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/app.css">
 
     <!-- jQuery -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -19,18 +20,20 @@
 
     <div class="container">
 
-        <h1>Custom Repeat</h1>
+        <h1>hsRepeat</h1>
 
         <div ng-controller="AppCtrl">
 
             <pre>{{ persons | json }}</pre>
 
-            <form class="form form-inline" ng-submit="add()">
-                <input type="text" ng-model="newPerson" class="form-control" required autofocus>
-                <input type="submit" class="btn btn-primary" value="Add">
+            <form>
+                <input type="text" ng-model="newPerson" autofocus>
+                <button ng-click="add()">Add</button>
             </form>
 
-            <h3 hs-repeat="person in persons">{{ person }}</h3>
+            <ul>
+                <li hs-repeat="person in persons">{{ person }}</li>
+            </ul>
 
         </div>
 
