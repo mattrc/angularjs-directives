@@ -1,0 +1,7 @@
+<h3>{{ friend.name }}</h3>
+<button ng-click="showConfirmation()">Delete</button>
+
+<div ng-show="friend.deleting" class="delete">
+    <div class="h4">Delete {{ friend.name }}?</div>
+    <button ng-click="hideConfirmation()">Cancel</button>
+</div>

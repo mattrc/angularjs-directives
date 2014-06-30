@@ -12,6 +12,8 @@
 	app.directive('hsFriend', function ($compile) {
 
 		return {
+			scope: true,
+			templateUrl: 'partials/template.html',
 			compile: function (element) {
 
 				// Extract the delete confirmation element
@@ -53,6 +55,17 @@
 		};
 
 	});
+
+
+
+
+
+
+
+
+
+
+
 
 	// Helper function to build a collection of friends
 	function buildFriends (count) {

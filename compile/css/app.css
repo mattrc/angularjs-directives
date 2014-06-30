@@ -1,3 +1,8 @@
+ul {
+	margin: 0;
+	padding: 0;
+}
+
 li {
 	width: 150px;
 	height: 120px;

@@ -23,26 +23,11 @@
 
     <div class="container-fluid">
 
-        <h1>A thousand friends</h1>
-        <p><a href="http://www.bennadel.com/blog/2557-defer-dom-tree-binding-in-angularjs-with-delayed-transclusion.htm">
-            Defer DOM Tree Binding In AngularJS With Delayed Transclusion
-        </a></p>
+        <h1>compile</h1>
 
-        <div ng-controller="AppController">
-
-            <ul class="list-unstyled">
-                <li hs-friend ng-repeat="friend in friends">
-                    <h3>{{ friend.name }}</h3>
-                    <button ng-click="showConfirmation()">Delete</button>
-
-                    <div ng-show="friend.deleting" class="delete">
-                        <div class="h4">Delete {{ friend.name }}?</div>
-                        <button ng-click="hideConfirmation()">Cancel</button>
-                    </div>
-                </li>
-            </ul>
-
-        </div>
+        <ul ng-controller="AppController">
+            <li hs-friend ng-repeat="friend in friends"></li>
+        </ul>
 
     </div>
 
