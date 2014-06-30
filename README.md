@@ -1,2 +1,2 @@
-angular-practice
+AngularJS Directives
 ================
