@@ -25,7 +25,7 @@ angular.module('app', [])
 .directive('rangeslider', function () {
 
 	return {
-		link: function (scope, element, attr) {
+		link: function (scope, element) {
 
 			// Config Object
 			var opts = {
@@ -44,7 +44,7 @@ angular.module('app', [])
 
 	return {
 
-		compile: function (tElement, tAttr) {
+		compile: function (tElement) {
 
 			// Create checkbox on the fly
 			var checkbox = angular.element('<label><input type="checkbox" ng-model="toggle"> Show password</label>');
@@ -53,7 +53,7 @@ angular.module('app', [])
 			tElement.after(checkbox);
 
 			// Return the post-link fn
-			return function (scope, element, attr) {
+			return function (scope, element) {
 
 				// Watch for changes in $scope.toggle
 				scope.$watch('toggle', function (newValue) {
