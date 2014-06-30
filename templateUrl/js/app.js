@@ -10,8 +10,8 @@ angular.module('app', [])
 			var tpl = attr.hsTpl || 'paragraph';
 			return 'partials/' + tpl + '.html';
 		}
-	}
-})
+	};
+});
 
 })();
 
