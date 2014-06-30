@@ -1,3 +1,13 @@
 .chart {
 	background: #ebebeb;
 }
+
+
+input {
+	width: 100%;
+	display: block;
+	margin-bottom: 20px;
+	font-size: 14px;
+	padding: 0.5em 1em;
+	border: 2px solid #ccc;
+}
