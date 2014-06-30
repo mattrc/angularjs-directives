@@ -6,7 +6,6 @@
 	// Controller: AppController
 	.controller('AppController', function ($scope) {
 		$scope.messages = generateMessages(20);
-		$scope.messages2 = generateMessages(20);
 	})
 
 	// Directive: hsInbox
@@ -63,6 +62,16 @@
 			}
 		};
 	});
+
+
+
+
+
+
+
+
+
+
 
 	// Helper function to build a collection of messages
 	function generateMessages(count) {
