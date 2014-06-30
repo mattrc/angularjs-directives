@@ -3,67 +3,25 @@
 angular.module('app', [])
 
 .controller('AppCtrl', function ($scope) {
-    $scope.title = 'Hello World';
-    $scope.colors = ['red', 'green', 'blue'];
-    $scope.person = {age: 25, name: 'jack'};
-
-    $scope.updateTitle = function (title) {
-        $scope.title = title;
-        $scope.newTitle = '';
+    $scope.person = {
+        name: 'John'
     };
-
-    $scope.addColor = function (color) {
-        $scope.colors.push(color);
-        $scope.newColor = '';
-    };
-
-    $scope.addPerson = function (key, val) {
-        $scope.person[key] = val;
-        $scope.key = '';
-        $scope.val = '';
-    };
-
 })
 
 .directive('oneWayBinding', function () {
     return {
         scope: {
-            title: '@',
-            subtitle: '@',
-            colors: '@',
-            person: '@',
-            // subtitle: '@foo'
+            name: '@personName'
         },
-        templateUrl: 'partials/one-way-binding.html'
+        templateUrl: 'partials/template.html'
     };
 })
 
 .directive('twoWayBinding', function () {
     return {
         scope: {
-            title: '=',
-            colors: '=',
-            person: '='
+            name: '=personName'
         },
-        templateUrl: 'partials/two-way-binding.html',
-        controller: function ($scope) {
-
-            $scope.updateTitle = function (title) {
-                $scope.title = title;
-                $scope.newTitle = '';
-            };
-
-            $scope.addColor = function (color) {
-                $scope.colors.push(color);
-                $scope.newColor = '';
-            };
-
-            $scope.addPerson = function (key, val) {
-                $scope.person[key] = val;
-                $scope.key = '';
-                $scope.val = '';
-            };
-
-        }
+        templateUrl: 'partials/template.html'
     };
 });

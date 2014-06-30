@@ -30,7 +30,7 @@ input, button {
 
 input {
 	border: 2px solid #ccc;
-	width: 200px;
+	width: 100%;
 }
 
 button {
