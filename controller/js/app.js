@@ -26,7 +26,7 @@
 				this.add = function (newMessage) {
 					$scope.messages.unshift({
 						id: $scope.messages.length,
-						from: newMessage.from,
+						to: newMessage.to,
 						body: newMessage.body
 					});
 				};
@@ -82,7 +82,7 @@
 
 			messages.unshift({
 				id: i,
-				from: window.chance.name(),
+				to: window.chance.name(),
 				body: window.chance.paragraph()
 			});
 

@@ -1,6 +1,5 @@
 <div class="message">
-	<h4>From: <a href="#">{{ message.from }}</a></h4>
+	<h4>To: <a href="#">{{ message.to }}</a></h4>
 	<p>{{ message.body }}</p>
-	<span>Scope ID: {{ $id }} - Message ID: {{ message.id }}</span>
 	<button ng-click="remove($index)">&times;</button>
 </div>
