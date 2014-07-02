@@ -6,7 +6,6 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="vendor/timepicker/jquery.timepicker.css">
-    <link rel="stylesheet" href="vendor/rangeslider/rangeslider.css">
     <link rel="stylesheet" href="vendor/taggingJS/example/tag-basic-style.css">
     <link rel="stylesheet" href="css/style.css">
 
@@ -17,7 +16,6 @@
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="vendor/timepicker/jquery.timepicker.js"></script>
     <script src="vendor/hideShowPassword/hideShowPassword.js"></script>
-    <script src="vendor/rangeslider/rangeslider.js"></script>
     <script src="vendor/taggingJS/tagging.js"></script>
 
     <!-- AngularJS -->
@@ -40,7 +38,6 @@
             <input timepicker type="text" ng-model="time">
         </div>
 
-
         <!-- jQuery hideShowPassword -->
         <h3><a href="http://cloudfour.github.io/hideShowPassword/">jQuery hideShowPassword</a></h3>
         <div class="well well-sm">
@@ -48,23 +45,16 @@
             <input hide-show-password type="password" ng-model="password">
         </div>
 
-        <!-- jQuery hideShowPassword -->
-        <h3><a href="http://andreruffert.github.io/rangeslider.js/">jQuery rangeslider</a></h3>
-        <div class="well well-sm">
-            <p>ngModel: <code>{{ range }}</code></p>
-            <input rangeslider ng-model="range" type="range" min="10" max="500" step="10" value="100">
-        </div>
-
-        <!-- jQuery hideShowPassword -->
+        <!-- jQuery taggingJs -->
         <h3><a href="http://sniperwolf.github.io/taggingJS/">jQuery taggingJS</a></h3>
 
-        <h4>Instance allows duplicate tags</h4>
+        <h4>Allows duplicate tags</h4>
         <div class="well well-sm">
             <p>ngModel: <code>{{ tags1 | json }}</code></p>
             <div tagging ng-model="tags1" opts="{'no-duplicate': false, 'edit-on-delete': false}"></div>
         </div>
 
-        <h4>Instance does not allow duplicate tags</h4>
+        <h4>Does not allow duplicate tags</h4>
         <div class="well well-sm">
             <p>ngModel: <code>{{ tags2 | json }}</code></p>
             <div tagging ng-model="tags2" opts="{'no-duplicate': true, 'edit-on-delete': true}"></div>

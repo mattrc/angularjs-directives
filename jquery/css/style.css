@@ -10,3 +10,8 @@ input {
 .tagging {
 	background: white;
 }
+
+input, textarea {
+	border: 1px solid #ccc;
+	padding: 0.25em 0.5em;
+}

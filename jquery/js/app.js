@@ -21,24 +21,6 @@ angular.module('app', [])
 
 })
 
-// jQuery rangeslider
-.directive('rangeslider', function () {
-
-	return {
-		link: function (scope, element) {
-
-			// Config Object
-			var opts = {
-				polyfill: false
-			};
-
-			// Init plugin
-			element.rangeslider(opts);
-		}
-	};
-
-})
-
 // jQuery.hideShowPassword
 .directive('hideShowPassword', function () {
 
