@@ -56,7 +56,7 @@ angular.module('app', [])
                         // Save reference (for deletion)
                         clones.push(clone);
                         // insert clone manually
-                        $element.after(clone);
+                        $element.before(clone);
                     });
                 }
 
