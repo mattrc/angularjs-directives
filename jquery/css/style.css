@@ -1,3 +1,17 @@
+body {
+	font-size: 20px;
+}
+
+.tag {
+	padding: 4px 27px 4px 0;
+}
+
+.tag .tag-i {
+	font-size: 1.1em;
+	top: 0.75em;
+	right: 8px;
+}
+
 h3 {
 	margin-top: 60px;
 }
