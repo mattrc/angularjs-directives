@@ -30,34 +30,46 @@
 
         <h1>jQuery Plugins</h1>
 
-        <!-- jQuery Timepicker -->
-        <h3><a href="http://jonthornton.github.io/jquery-timepicker/">jQuery Timepicker</a></h3>
 
+        <h3>Timepicker</h3>
         <div class="well well-sm">
             <p>ngModel: <code>{{ time }}</code></p>
+
+            <!-- Directive: tagging -->
             <input timepicker type="text" ng-model="time">
+
         </div>
 
-        <!-- jQuery hideShowPassword -->
-        <h3><a href="http://cloudfour.github.io/hideShowPassword/">jQuery hideShowPassword</a></h3>
+
+
+        <h3>hideShowPassword</h3>
         <div class="well well-sm">
             <p>ngModel: <code>{{ password }}</code></p>
+
+            <!-- Directive: tagging -->
             <input hide-show-password type="password" ng-model="password">
+
         </div>
 
-        <!-- jQuery taggingJs -->
-        <h3><a href="http://sniperwolf.github.io/taggingJS/">jQuery taggingJS</a></h3>
 
-        <h4>Allows duplicate tags</h4>
+
+        <h3>taggingJS</h3>
         <div class="well well-sm">
             <p>ngModel: <code>{{ tags1 | json }}</code></p>
+
+            <!-- Directive: tagging -->
             <div tagging ng-model="tags1" opts="{'no-duplicate': false, 'edit-on-delete': false}"></div>
+
         </div>
 
-        <h4>Does not allow duplicate tags</h4>
+
+
         <div class="well well-sm">
             <p>ngModel: <code>{{ tags2 | json }}</code></p>
+
+            <!-- Directive: tagging -->
             <div tagging ng-model="tags2" opts="{'no-duplicate': true, 'edit-on-delete': true}"></div>
+
         </div>
 
     </div>
