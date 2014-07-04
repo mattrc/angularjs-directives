@@ -1,0 +1,45 @@
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>$interpolate</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <!-- JavaScript -->
+    <script src="../bower_components/chance/chance.js"></script>
+
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+
+    <!-- AngularJS -->
+    <script src="../bower_components/angular/angular.js"></script>
+    <!--<script src="js/angular-1.0.8.js"></script>-->
+
+    <!-- App -->
+    <script src="js/app.js"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>$interpolate</h1>
+
+        <div ng-controller="AppController">
+
+            <div hs-directive></div>
+
+            <alert>{{ friends }}</alert>
+
+            <alert alert-type="warning" fn="log(something)">{{ friends }}</alert>
+            <alert alert-type="danger">{{ friends }}</alert>
+            <alert alert-type="success">{{ friends }}</alert>
+
+
+        </div>
+
+    </div>
+
+</body>
+</html>
