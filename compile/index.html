@@ -26,7 +26,9 @@
         <h1>compile</h1>
 
         <ul ng-controller="AppController">
-            <li hs-friend ng-repeat="friend in friends"></li>
+            <li ng-repeat="friend in friends">
+                <hs-friend></hs-friend>
+            </li>
         </ul>
 
     </div>

@@ -12,7 +12,7 @@
 	app.directive('hsFriend', function ($compile) {
 
 		return {
-			scope: true,
+			restrict: 'EA',
 			templateUrl: 'partials/template.html',
 			compile: function (element) {
 
@@ -26,15 +26,13 @@
 				// Link function
 				return function (scope, element) {
 
-					// Inject the delete confirmation when the user "starts" to click.
-					element.on('mousedown', 'button', function (ev) {
+					// Inject the delete confirmation when the user clicks, just one time.
+					element.one('mousedown', 'button', function () {
 
 						// Transclude and link the DOM tree for the delete confirmation.
 						transcludeConfirm(scope, function (clone) {
 							// Append to element
 							element.append(clone);
-							// Deregister event
-							element.off(ev);
 						});
 
 						// Trigger a $digest
