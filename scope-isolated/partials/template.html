@@ -1,7 +1,12 @@
 <div class="well well-sm">
-    <div class="scope-id">#{{ $id }}</div>
-	<p><code>{{ name }}</code></p>
 
-    <hr>
-    <input type="text" ng-model="name" placeholder="Title">
+    <label>@day (one way)</label>
+    <input type="text" ng-model="day">
+
+    <label>=month (two way)</label>
+    <input type="text" ng-model="month">
+
+    <label>&update (expression)</label> <br>
+    <button ng-click="update({day: day})">Update day</button>
+
 </div>

@@ -2,25 +2,23 @@
 
 angular.module('app', [])
 
-.controller('AppCtrl', function ($scope) {
-    $scope.person = {
-        name: 'John'
+.controller('AppController', function ($scope) {
+
+    $scope.day = 'Lunes';
+    $scope.month = 'Noviembre';
+
+    $scope.updateDay = function (day) {
+        $scope.day = day;
     };
 })
 
-.directive('oneWayBinding', function () {
+.directive('hsDirective', function () {
     return {
+        restrict: 'E',
         scope: {
-            name: '@personName'
-        },
-        templateUrl: 'partials/template.html'
-    };
-})
-
-.directive('twoWayBinding', function () {
-    return {
-        scope: {
-            name: '=personName'
+            day: '@',
+            month: '=',
+            update: '&',
         },
         templateUrl: 'partials/template.html'
     };

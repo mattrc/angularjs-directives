@@ -2,42 +2,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Isolated Scope - One way binding</title>
-
-    <!-- Styles -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- jQuery -->
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
-
-    <!-- AngularJS -->
     <script src="../bower_components/angular/angular.js"></script>
-
-    <!-- App -->
     <script src="js/app.js"></script>
 </head>
-<body>
+<body class="container">
 
-    <div ng-controller="AppCtrl" class="container">
+    <h1>Isolated Scope</h1>
 
-        <h1>Isolated Scope</h1>
+    <div ng-controller="AppController">
 
         <h3>App Controller</h3>
         <div class="alert alert-info">
-            <p><code>{{ person }}</code></p>
-            <hr>
-
-            <input type="text" ng-model="person.name" placeholder="Title">
-
-            <div class="scope-id">#{{ $id }}</div>
+            <label>$scope.day</label>
+            <input type="text" ng-model="day">
+            <label>$scope.month</label>
+            <input type="text" ng-model="month">
         </div>
 
-        <h3>One way binding</h3>
-        <div one-way-binding person-name="{{ person.name }}"></div>
-
-        <h3>Two way binding</h3>
-        <div two-way-binding person-name="person.name"></div>
-
+        <h3>hsDirective</h3>
+        <hs-directive day="{{ day }}" month="month" update="updateDay(day)"></hs-directive>
     </div>
 
 </body>
