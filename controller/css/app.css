@@ -1,5 +1,5 @@
 body {
-	background: #e9eaed;
+	background: #e9e9e9;
 }
 
 button {
@@ -8,7 +8,6 @@ button {
 	padding: 0.5em 1em;
 	border-radius: 3px;
 }
-
 
 /*.inbox {
 	width: 48%;
