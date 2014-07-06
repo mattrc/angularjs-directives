@@ -1,48 +1,37 @@
 <html ng-app="app">
 <head>
-    <meta charset="UTF-8">
-    <title>Scopes</title>
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- jQuery -->
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
-
-    <!-- AngularJS -->
-    <script src="../bower_components/angular/angular.js"></script>
-
-    <!-- App -->
-    <script src="js/app.js"></script>
+	<meta charset="UTF-8">
+	<title>Scopes</title>
+	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="../bower_components/jquery/dist/jquery.js"></script>
+	<script src="../bower_components/angular/angular.js"></script>
+	<script src="js/app.js"></script>
 </head>
-<body>
+<body class="container">
 
-    <div ng-controller="AppCtrl" class="container">
+	<h1>Scopes</h1>
 
-        <h1>Scopes</h1>
+	<div ng-controller="AppController">
 
-        <h3>App Controller</h3>
-        <div class="alert alert-info">
-            <p>Person: <code>{{ person }}</code></p>
-            <p>Country: <code>{{ country }}</code></p>
+		<h3>AppController</h3>
+		<div class="alert alert-info">
+			<p>Person: <code>{{ person }}</code></p>
+			<p>Country: <code>{{ country }}</code></p>
 
-            <input type="text" ng-model="person.name">
-            <input type="text" ng-model="country">
+			<input type="text" ng-model="person.name" placeholder="person.name" autofocus>
+			<input type="text" ng-model="country" placeholder="country">
 
-            <div class="scope-id">#{{ $id }}</div>
-        </div>
+			<div class="scope-id">#{{ $id }}</div>
+		</div>
 
-        <h3>Scope: false</h3>
-        <div scope-false></div>
+		<h3>Scope: false</h3>
+		<div scope-false></div>
 
-        <h3>Scope: true</h3>
-        <div scope-true></div>
+		<h3>Scope: true</h3>
+		<div scope-true></div>
 
-
-    </div>
-
-    <br>
+	</div>
 
 </body>
 </html>

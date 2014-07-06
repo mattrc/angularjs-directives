@@ -2,7 +2,7 @@
 
 angular.module('app', [])
 
-.controller('AppCtrl', function ($scope) {
+.controller('AppController', function ($scope) {
 
     // Objects (Array, Object)
     $scope.person = {
