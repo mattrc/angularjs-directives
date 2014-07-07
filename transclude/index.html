@@ -4,32 +4,22 @@
     <title>transclude</title>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/app.css">
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../bower_components/angular/angular.js"></script>
     <script src="js/app.js"></script>
 </head>
-<body>
+<body class="container">
 
-    <div class="container">
+    <h1>transclude</h1>
 
-        <h1>transclude</h1>
-
-        <!-- AppController -->
-        <div ng-controller="AppController">
-            <code>{{ $id }}</code>
-
-            <!-- <input type="text" ng-model="parent.foo"> -->
-
-            <!-- hsDirective -->
-            <div hs-directive>
-                <div>
-                    <code>{{ $id }}</code>
-                    <p>{{ numbers }}</p>
-                    <!-- <input type="text" ng-model="parent.foo"> -->
-                </div>
+    <div ng-controller="AppController">
+        <div hs-directive>
+            <div>
+                <h3>INDEX CONTENT</h3>
+                <code>{{ $id }}</code>
             </div>
-
         </div>
+
+        <code>{{ $id }}</code>
     </div>
 
 </body>
