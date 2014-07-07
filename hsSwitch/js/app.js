@@ -2,25 +2,22 @@
 
 angular.module('app', [])
 
-/**
- * Directive: hs-switch
- */
 .directive('hsSwitch', function () {
     return {
         controller: function () {
-            // Linker functions object
+            // Transclude functions object
             this.cases = {};
         },
-        link: function (scope, el, attrs, ctrl) {
+        link: function (scope, element, attrs, ctrl) {
 
             var caseElement,
                 caseScope;
 
             // Watch for changes in "rgbColor"
-            scope.$watch(attrs.hsSwitch, function (nv) {
+            scope.$watch(attrs.hsSwitch, function (newValue) {
 
-                // Linker function
-                var caseLinker = ctrl.cases['!' + nv] || ctrl.cases['?'];
+                // Transclude function
+                var caseTransclude = ctrl.cases[newValue] || ctrl.cases['default'];
 
                 // If found previos element
                 if (caseElement) {
@@ -32,16 +29,16 @@ angular.module('app', [])
                     caseElement = caseScope = null;
                 }
 
-                // If the linker function exists
-                if (caseLinker) {
+                // If the transclude function exists
+                if (caseTransclude) {
                     // Create new scope
                     caseScope = scope.$new();
                     // Bind scope to linked element
-                    caseLinker(caseScope, function (element) {
+                    caseTransclude(caseScope, function (clone) {
                         // Store linked element reference
-                        caseElement = element;
+                        caseElement = clone;
                         // Append linked element
-                        el.append(caseElement);
+                        element.append(caseElement);
                     });
                 }
 
@@ -50,30 +47,22 @@ angular.module('app', [])
     };
 })
 
-
-/**
- * Directive: hs-switch-when
- */
 .directive('hsSwitchWhen', function () {
     return {
         transclude: 'element',
         require: '^hsSwitch',
-        link: function (scope, el, attrs, hsSwitchCtrl, linker) {
-            hsSwitchCtrl.cases['!' + attrs.hsSwitchWhen] = linker;
+        link: function (scope, element, attrs, hsSwitchCtrl, transclude) {
+            hsSwitchCtrl.cases[attrs.hsSwitchWhen] = transclude;
         }
     };
 })
 
-
-/**
- * Directive: hs-switch-default
- */
 .directive('hsSwitchDefault', function () {
     return {
         transclude: 'element',
         require: '^hsSwitch',
-        link: function (scope, el, attrs, hsSwitchCtrl, linker) {
-            hsSwitchCtrl.cases['?'] = linker;
+        link: function (scope, element, attrs, hsSwitchCtrl, transclude) {
+            hsSwitchCtrl.cases['default'] = transclude;
         }
     };
 });
