@@ -2,66 +2,58 @@
 
 angular.module('app', [])
 
-.controller('AppCtrl', function ($scope) {
-    $scope.persons = ['Ana', 'Laura', 'Javier', 'Marcela', 'Federico'];
+.controller('AppController', function ($scope) {
 
-    $scope.add = function ()  {
-        $scope.persons.push($scope.newPerson);
-        $scope.newPerson = '';
-    };
+	$scope.colors = ['Red', 'Green', 'Blue'];
+
+	$scope.add = function (color)  {
+		$scope.colors.push(color);
+		$scope.newColor = '';
+	};
 })
 
 .directive('hsRepeat', function () {
 
-    var clearClones = function (clones) {
-        angular.forEach(clones, function (el) {
-            el.remove();
-        });
-    };
+	return {
+		transclude: 'element',
+		link: function (scope, element, attrs, ctrl, transclude) {
 
-    return {
-        transclude: 'element',
-        priority: 1000,
-        terminal: true,
-        link: function ($scope, $element, $attr, ctrl, $transclude)  {
+			// Parent element
+			var parent = element.parent();
 
-            // Repeat expression
-            var expression = $attr.hsRepeat;
+			// hsRepeat expression
+			var expression = attrs.hsRepeat;
 
-            // Split with regex
-            var match = expression.match(/^\s*([\s\S]+?)\s+in\s+([\s\S]+?)?\s*$/);
+			// Split with regex
+			var match = expression.match(/^\s*([\s\S]+?)\s+in\s+([\s\S]+?)?\s*$/);
 
-            // Key
-            var key = match[1];
-            var values = match[2];
+			// Matches
+			var prop = match[1]; // color
+			var collection = match[2]; // colors
 
-            // Array of inserted clones
-            var clones = [];
+			// Watch collection (colors)
+			scope.$watchCollection(collection, function (items) {
 
-            $scope.$watchCollection(values, function (collection) {
+				// Clear inserted clones
+				parent.children().remove();
 
-                // Clear inserted clones
-                clearClones(clones);
+				// Iterate over all items in collection
+				angular.forEach(items, function (item) {
 
-                // Iterate over all items in collection
-                for (var i = 0; i < collection.length; i += 1) {
+					// Create new scope
+					var childScope = scope.$new();
 
-                    // Create new scope
-                    var childScope = $scope.$new();
-                    // Assign current item to the scope
-                    childScope[key] = collection[i];
+					// Assign current item to the scope
+					childScope[prop] = item;
 
-                    // Transclude element
-                    $transclude(childScope, function (clone) {
-                        // Save reference (for deletion)
-                        clones.push(clone);
-                        // insert clone manually
-                        $element.before(clone);
-                    });
-                }
+					// Clone transcluded element
+					transclude(childScope, function (clone) {
 
-            });
-        }
-    };
-
+						// insert clone
+						element.before(clone);
+					});
+				});
+			});
+		}
+	};
 });
