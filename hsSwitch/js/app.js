@@ -10,35 +10,22 @@ angular.module('app', [])
         },
         link: function (scope, element, attrs, ctrl) {
 
-            var caseElement,
-                caseScope;
-
             // Watch for changes in "rgbColor"
             scope.$watch(attrs.hsSwitch, function (newValue) {
 
                 // Transclude function
-                var caseTransclude = ctrl.cases[newValue] || ctrl.cases['default'];
-
-                // If found previos element
-                if (caseElement) {
-                    // Destroy scope
-                    caseScope.$destroy();
-                    // Remove element
-                    caseElement.remove();
-                    // Clear vars
-                    caseElement = caseScope = null;
-                }
+                var transcludeCase = ctrl.cases[newValue] || ctrl.cases['default'];
 
                 // If the transclude function exists
-                if (caseTransclude) {
-                    // Create new scope
-                    caseScope = scope.$new();
+                if (transcludeCase) {
+
+                    // Empty element
+                    element.empty();
+
                     // Bind scope to linked element
-                    caseTransclude(caseScope, function (clone) {
-                        // Store linked element reference
-                        caseElement = clone;
+                    transcludeCase(scope.$new(), function (clone) {
                         // Append linked element
-                        element.append(caseElement);
+                        element.append(clone);
                     });
                 }
 

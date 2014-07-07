@@ -11,19 +11,25 @@ input {
 	text-align: center;
 	font-size: 24px;
 	font-weight: bold;
+	background: #ebebeb;
 }
 
-[hs-switch-when="red"] {
+[hs-switch-when="red"],
+[ng-switch-when="red"] {
 	background: #d43f3a;
 	color: white;
 }
 
-[hs-switch-when="green"] {
+[hs-switch-when="green"],
+[ng-switch-when="green"] {
 	background: #4cae4c;
 	color: white;
 }
 
-[hs-switch-when="blue"] {
+[hs-switch-when="blue"],
+[ng-switch-when="blue"] {
 	background: #357ebd;
 	color: white;
 }
+
+
